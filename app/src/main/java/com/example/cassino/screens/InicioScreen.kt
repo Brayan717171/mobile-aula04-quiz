@@ -73,6 +73,7 @@ fun InicioScreen(
             onClick = onIniciar,
             enabled = nome.isNotBlank(),
             modifier = Modifier.fillMaxWidth()
+
         ) {
             Text("INICIAR")
         }

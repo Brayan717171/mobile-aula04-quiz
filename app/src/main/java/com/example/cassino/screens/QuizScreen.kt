@@ -49,12 +49,8 @@ fun QuizScreen(
             fontSize = 16.sp
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
 
-        LinearProgressIndicator(
-            progress = { (indiceAtual + 1) / totalPerguntas.toFloat() },
-            modifier = Modifier.fillMaxWidth()
-        )
+
 
         Spacer(modifier = Modifier.height(32.dp))
 
