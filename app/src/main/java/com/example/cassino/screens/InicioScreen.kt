@@ -1,6 +1,7 @@
 package com.example.cassino.screens
 
-import android.R
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,73 +10,68 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.cassino.R
+import com.example.cassino.ui.theme.AmareloQuiz
+import com.example.cassino.ui.theme.AzulQuiz
+import com.example.cassino.ui.theme.TextoQuiz
 
 @Composable
 fun InicioScreen(
-    nome: String,
-    onNomeChange: (String) -> Unit,
     onIniciar: () -> Unit,
-    modifier: Modifier = Modifier,
-
+    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier
-            .background(Color(0xFFE0E0E0))
             .fillMaxSize()
+            .background(AzulQuiz)
+            .systemBarsPadding()
             .padding(32.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-
-
+        verticalArrangement = Arrangement.Center
     ) {
+        Image(
+            painter = painterResource(R.drawable.logo_quiz),
+            contentDescription = "Logo do Quiz",
+            modifier = Modifier.size(180.dp)
+        )
 
+        Spacer(modifier = Modifier.height(72.dp))
 
         Text(
-
-            text = "QUIZ",
-            fontSize = 48.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color(0xFF000000)
+            text = "QUIZATRON 3000",
+            fontSize = 32.sp,
+            color = TextoQuiz,
+            textAlign = TextAlign.Center
         )
 
-        Text(
-            text = "Teste seus conhecimentos!",
-            fontSize = 18.sp ,
-            color = Color(0xFF212121)
-        )
-
-        Spacer(modifier = Modifier.height(32.dp))
-
-        OutlinedTextField(
-            value = nome,
-            onValueChange = onNomeChange,
-            label = { Text("Seu nome") },
-            singleLine = true,
-            modifier = Modifier.fillMaxWidth()
-
-
-
-        )
-
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(48.dp))
 
         Button(
             onClick = onIniciar,
-            enabled = nome.isNotBlank(),
-            modifier = Modifier.fillMaxWidth()
-
+            shape = CircleShape,
+            border = BorderStroke(1.dp, TextoQuiz),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = AmareloQuiz,
+                contentColor = TextoQuiz
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(60.dp)
         ) {
-            Text("INICIAR")
+            Text(text = "COMEÇAR!", fontSize = 20.sp)
         }
     }
 }

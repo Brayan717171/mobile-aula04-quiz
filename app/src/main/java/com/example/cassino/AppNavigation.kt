@@ -24,8 +24,6 @@ fun AppNavigation(
     ) {
         composable("inicio") {
             InicioScreen(
-                nome = viewModel.nomeJogador,
-                onNomeChange = { viewModel.onNomeChange(it) },
                 onIniciar = {
                     viewModel.iniciarQuiz()
                     navController.navigate("quiz")
@@ -51,7 +49,6 @@ fun AppNavigation(
 
         composable("resultado") {
             ResultadoScreen(
-                nome = viewModel.nomeJogador,
                 acertos = viewModel.acertos,
                 total = viewModel.perguntas.size,
                 onReiniciar = {
